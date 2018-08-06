@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-qucooncallnumber" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <description>Call Number from Cordova Application for Qucoon</description>
+  <name>qucooncallnumber</name>
+  <author>Valentine Ofili</author>
+  <license>Apache 2.0</license>
+  <keywords>cordova,call,ussd,ussddialer</keywords>
+  <js-module src="www/CallNumber.js" name="CallNumber">
+    <clobbers target="call"/>
+  </js-module>
+
+  <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="CallNumber">
+              <param name="android-package" value="com.qucoon.callnumber.CFCallNumber"/>
+          </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/*">
+          <uses-permission android:name="android.permission.CALL_PHONE"/>
+          <uses-feature android:name="android.hardware.telephony" android:required="false" />
+      </config-file>
+      <source-file src="src/android/CFCallNumber.java" target-dir="src/com/qucoon/callnumber" />
+  </platform>
+</plugin>
+1
